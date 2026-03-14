@@ -58,9 +58,9 @@ public class WasteBin {
    @Override
    public String toString(){
        return "ID: " + binID +
-               "| Location: " + location +
-               "| Waste Type: " + wasteType +
-               "| Fill Level: " + fillLevel; 
+               " | Location: " + location +
+               " | Waste Type: " + wasteType +
+               " | Fill Level: " + fillLevel; 
    }
     
 }

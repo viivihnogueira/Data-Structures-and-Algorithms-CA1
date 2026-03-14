@@ -41,18 +41,18 @@
                       </Group>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="idTxt" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="typeCmb" min="-2" max="-2" attributes="0"/>
-                          <Component id="locationTxt" min="-2" max="-2" attributes="0"/>
-                          <Component id="fillCmb" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="addBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="updateBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="deleteBtn" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="typeCmb" alignment="1" max="32767" attributes="0"/>
+                          <Component id="idTxt" alignment="1" max="32767" attributes="0"/>
+                          <Component id="locationTxt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="fillCmb" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -138,14 +138,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="idTxt">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="locationTxt">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="typeCmb">
       <Properties>
@@ -199,6 +193,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="View Bins"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="requestBtn">
       <Properties>

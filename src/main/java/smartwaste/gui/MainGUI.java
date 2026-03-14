@@ -60,10 +60,6 @@ public class MainGUI extends javax.swing.JFrame {
 
         fillLbl.setText("Fill Level:");
 
-        idTxt.setText("jTextField1");
-
-        locationTxt.setText("jTextField1");
-
         typeCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recycling", "Organic", "General Waste" }));
 
         fillCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empty", "25%", "50%", "75%", "Full" }));
@@ -80,6 +76,11 @@ public class MainGUI extends javax.swing.JFrame {
         deleteBtn.setText("Delete Bin");
 
         viewBtn.setText("View Bins");
+        viewBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBtnActionPerformed(evt);
+            }
+        });
 
         requestBtn.setText("Request Collection");
 
@@ -108,17 +109,17 @@ public class MainGUI extends javax.swing.JFrame {
                             .addComponent(locationLbl)
                             .addComponent(typeLbl)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(typeCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(locationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fillCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(addBtn)
                             .addGap(18, 18, 18)
                             .addComponent(updateBtn)
                             .addGap(18, 18, 18)
-                            .addComponent(deleteBtn))))
+                            .addComponent(deleteBtn))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(typeCmb, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(idTxt, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(locationTxt)
+                            .addComponent(fillCmb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(128, 128, 128))
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
@@ -177,11 +178,18 @@ public class MainGUI extends javax.swing.JFrame {
         String wasteType = typeCmb.getSelectedItem().toString();
         String fillLevel = fillCmb.getSelectedItem().toString();
         
-        //accepting users input to create a bin and displaying the output
+        //accepting users input to create a bin and displaying the successfuilly added output message
         WasteBin bin = new WasteBin(binID, location, wasteType, fillLevel);
         manager.addBin(bin);
         
-        outputTxt.append("Added Bin: "+ bin.toString() + "\n");
+        outputTxt.append("Bin "+ binID + " was successfully added\n");
+        
+        /// cleaning the text fields after bin is added
+        
+        idTxt.setText("");
+        locationTxt.setText("");
+        typeCmb.setSelectedIndex(0);
+        fillCmb.setSelectedIndex(0);
         
         
     }
@@ -190,6 +198,16 @@ public class MainGUI extends javax.swing.JFrame {
            outputTxt.append("Please enter a valid number for Bin ID.\n");
        }
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void viewBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBtnActionPerformed
+        /// clean the output JTextArea before showing the full bin list
+       outputTxt.setText("");
+       
+       /// display the list of bins added previously in the JTextArea
+       for (WasteBin bin : manager.getBins()){
+           outputTxt.append(bin.toString() + "\n");
+       }
+    }//GEN-LAST:event_viewBtnActionPerformed
 
     /**
      * @param args the command line arguments
