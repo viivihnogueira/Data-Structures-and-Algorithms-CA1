@@ -4,11 +4,16 @@
  */
 package smartwaste.gui;
 
+import smartwaste.manager.WasteManager;
+import smartwaste.model.WasteBin;
+
 /**
  *
  * @author viivihnogueira
  */
 public class MainGUI extends javax.swing.JFrame {
+    
+    private WasteManager manager = new WasteManager();
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainGUI.class.getName());
 
@@ -64,6 +69,11 @@ public class MainGUI extends javax.swing.JFrame {
         fillCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empty", "25%", "50%", "75%", "Full" }));
 
         addBtn.setText("Add Bin");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
         updateBtn.setText("Update Bin");
 
@@ -158,6 +168,28 @@ public class MainGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // accepting users input to add a new bin
+       try{
+        int binID = Integer.parseInt(idTxt.getText());
+        String location = locationTxt.getText();
+        String wasteType = typeCmb.getSelectedItem().toString();
+        String fillLevel = fillCmb.getSelectedItem().toString();
+        
+        //accepting users input to create a bin and displaying the output
+        WasteBin bin = new WasteBin(binID, location, wasteType, fillLevel);
+        manager.addBin(bin);
+        
+        outputTxt.append("Added Bin: "+ bin.toString() + "\n");
+        
+        
+    }
+       /// if input is invalid 
+       catch (NumberFormatException e) {
+           outputTxt.append("Please enter a valid number for Bin ID.\n");
+       }
+    }//GEN-LAST:event_addBtnActionPerformed
 
     /**
      * @param args the command line arguments
