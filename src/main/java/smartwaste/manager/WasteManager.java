@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import smartwaste.model.WasteBin;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  *
@@ -21,6 +22,9 @@ public class WasteManager {
     /// declaring linked list queue to request collection of WasteBin Objects 
     private Queue<WasteBin> collectionQueue = new LinkedList<>();
 
+    /// declaring stack to view history and proccessed WasteBin objects
+    private Stack<WasteBin> collectionHistory = new Stack<>();
+    
     /// constructor
     public WasteManager() {
         bins = new ArrayList<>();
@@ -76,9 +80,26 @@ public class WasteManager {
         collectionQueue.add(bin);
     }
     
-    /// method to view the queu
+    /// method to view the queue
     /// @return e
    public Queue<WasteBin> getCollectionQueue(){
        return collectionQueue;
    }
+   
+   /// method to process colection of wastebin
+   /// remove first wastebin object from the queue and add it to the stack/history
+  public WasteBin processNextCollection(){
+      if(!collectionQueue.isEmpty()){
+          WasteBin bin = collectionQueue.poll(); //remove from queue
+          collectionHistory.push(bin); ///add to stack
+          return bin;
+      }
+       return null; //empty queue
+  }
+
+  /// method to return history
+  public Stack<WasteBin> getCollectionHistory(){
+      return collectionHistory;
+  }
+
 }
