@@ -74,6 +74,11 @@ public class MainGUI extends javax.swing.JFrame {
         updateBtn.setText("Update Bin");
 
         deleteBtn.setText("Delete Bin");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         viewBtn.setText("View Bins");
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -171,9 +176,23 @@ public class MainGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        // accepting users input to add a new bin
+
+// not accepting empty fields
+if (idTxt.getText().isEmpty() || locationTxt.getText().isEmpty()) {
+    outputTxt.append("Please fill in all fields before adding a bin\n");
+    return;
+}
+
+// accepting users input to add a new bin
        try{
         int binID = Integer.parseInt(idTxt.getText());
+        
+        // calling method to verify duplicated ids
+if (manager.binExists(binID)){
+    outputTxt.append("Bin " + binID + " already exists\n");
+    return;
+}
+        
         String location = locationTxt.getText();
         String wasteType = typeCmb.getSelectedItem().toString();
         String fillLevel = fillCmb.getSelectedItem().toString();
@@ -208,6 +227,21 @@ public class MainGUI extends javax.swing.JFrame {
            outputTxt.append(bin.toString() + "\n");
        }
     }//GEN-LAST:event_viewBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        /// calling the delete method
+       try{
+           int binID = Integer.parseInt(idTxt.getText());
+           boolean removed = manager.deleteBin(binID);
+           if (removed){
+               outputTxt.append("Bin " + binID + " was deleted successfully\n");
+           } else {
+               outputTxt.append("Bin " + binID + " not found\n");
+           }
+       } catch (NumberFormatException e) {
+           outputTxt.append("Please enter a valid Bin ID\n");
+       }
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     /**
      * @param args the command line arguments

@@ -26,4 +26,25 @@ public class WasteManager {
     public ArrayList<WasteBin> getBins(){
         return bins;
     }
+    
+    ///method to delete bins
+    public boolean deleteBin(int binID){
+        for (WasteBin bin : bins){
+            if(bin.getBinID() == binID){
+                bins.remove(bin);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /// method to not accept duplicated bins
+  public boolean binExists(int binID) {
+      for (WasteBin bin : bins){
+          if (bin.getBinID() == binID){
+              return true;
+          }
+      }
+      return false;
+  }
 }
