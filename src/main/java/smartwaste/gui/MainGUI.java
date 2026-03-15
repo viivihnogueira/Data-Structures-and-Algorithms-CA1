@@ -6,6 +6,7 @@ package smartwaste.gui;
 
 import smartwaste.manager.WasteManager;
 import smartwaste.model.WasteBin;
+import java.util.Queue;
 
 /**
  *
@@ -100,6 +101,11 @@ public class MainGUI extends javax.swing.JFrame {
         });
 
         collectionQueueBtn.setText("View Collection Queue");
+        collectionQueueBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                collectionQueueBtnActionPerformed(evt);
+            }
+        });
 
         outputTxt.setEditable(false);
         outputTxt.setColumns(20);
@@ -330,6 +336,22 @@ if (manager.binExists(binID)){
             outputTxt.append("Please enter a valid Bin ID\n");
         }
     }//GEN-LAST:event_requestBtnActionPerformed
+
+    private void collectionQueueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectionQueueBtnActionPerformed
+        outputTxt.setText("");
+        
+        Queue<WasteBin> queue = manager.getCollectionQueue();
+        if(queue.isEmpty()){
+            outputTxt.append("The collection queue is empty\n");
+            return;
+        }
+        outputTxt.append("Bins waiting for collection:\n");
+        outputTxt.append("----------------------------\n");
+        
+        for(WasteBin bin : queue){
+            outputTxt.append("Bin " + bin.getBinID() + " - " + bin.getLocation() + " - " + bin.getWasteType() + " - " + bin.getFillLevel() + "\n");
+        }
+    }//GEN-LAST:event_collectionQueueBtnActionPerformed
 
     /**
      * @param args the command line arguments
