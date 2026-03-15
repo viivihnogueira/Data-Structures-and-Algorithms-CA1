@@ -72,6 +72,11 @@ public class MainGUI extends javax.swing.JFrame {
         });
 
         updateBtn.setText("Update Bin");
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateBtnActionPerformed(evt);
+            }
+        });
 
         deleteBtn.setText("Delete Bin");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +184,7 @@ public class MainGUI extends javax.swing.JFrame {
 
 // not accepting empty fields
 if (idTxt.getText().isEmpty() || locationTxt.getText().isEmpty()) {
+    outputTxt.setText("");
     outputTxt.append("Please fill in all fields before adding a bin\n");
     return;
 }
@@ -189,6 +195,7 @@ if (idTxt.getText().isEmpty() || locationTxt.getText().isEmpty()) {
         
         // calling method to verify duplicated ids
 if (manager.binExists(binID)){
+    outputTxt.setText("");
     outputTxt.append("Bin " + binID + " already exists\n");
     return;
 }
@@ -201,6 +208,7 @@ if (manager.binExists(binID)){
         WasteBin bin = new WasteBin(binID, location, wasteType, fillLevel);
         manager.addBin(bin);
         
+        outputTxt.setText("");
         outputTxt.append("Bin "+ binID + " was successfully added\n");
         
         /// cleaning the text fields after bin is added
@@ -214,6 +222,7 @@ if (manager.binExists(binID)){
     }
        /// if input is invalid 
        catch (NumberFormatException e) {
+           outputTxt.setText("");
            outputTxt.append("Please enter a valid number for Bin ID.\n");
        }
     }//GEN-LAST:event_addBtnActionPerformed
@@ -234,14 +243,63 @@ if (manager.binExists(binID)){
            int binID = Integer.parseInt(idTxt.getText());
            boolean removed = manager.deleteBin(binID);
            if (removed){
+               outputTxt.setText("");
                outputTxt.append("Bin " + binID + " was deleted successfully\n");
            } else {
+               outputTxt.setText("");
                outputTxt.append("Bin " + binID + " not found\n");
            }
        } catch (NumberFormatException e) {
+           outputTxt.setText("");
            outputTxt.append("Please enter a valid Bin ID\n");
+           
        }
+      
+         /// cleaning the text fields after bin is added
+        
+        idTxt.setText("");
+        locationTxt.setText("");
+        typeCmb.setSelectedIndex(0);
+        fillCmb.setSelectedIndex(0);
+       
     }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
+        /// not accepting empty fields
+        if (idTxt.getText().isEmpty() || locationTxt.getText().isEmpty()){
+            outputTxt.setText("");
+            outputTxt.append("Please fill in all fields before updating a bin\n");
+            return;
+        }        
+
+// calling update method
+        try {
+        int binID = Integer.parseInt(idTxt.getText());
+        String location = locationTxt.getText();
+        String wasteType = typeCmb.getSelectedItem().toString();
+        String fillLevel = fillCmb.getSelectedItem().toString();
+        
+        boolean updated = manager.updateBin(binID, location, wasteType, fillLevel);
+        
+        if(updated){
+            outputTxt.setText("");
+            outputTxt.append("Bin " + binID + " updated successfully\n");
+        } else {
+            outputTxt.setText("");
+            outputTxt.append("Bin " + binID + " not found\n");
+        }
+    } catch (NumberFormatException e) {
+        outputTxt.setText("");
+        outputTxt.append("Please enter a valid Bin ID\n");
+    }
+          /// cleaning the text fields after bin is added
+        
+        idTxt.setText("");
+        locationTxt.setText("");
+        typeCmb.setSelectedIndex(0);
+        fillCmb.setSelectedIndex(0);
+        
+    }//GEN-LAST:event_updateBtnActionPerformed
 
     /**
      * @param args the command line arguments

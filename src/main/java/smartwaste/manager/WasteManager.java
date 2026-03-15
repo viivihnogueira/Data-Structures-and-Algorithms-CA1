@@ -47,4 +47,18 @@ public class WasteManager {
       }
       return false;
   }
+  
+  // method to update bins
+  public boolean updateBin(int binID, String location, String wasteType,String fillLevel){
+      for (WasteBin bin : bins){
+          if(bin.getBinID() == binID){
+              
+              bin.setLocation(location);
+              bin.setWasteType(wasteType);
+              bin.setFillLevel(fillLevel);
+              return true;
+          }
+      }
+      return false;
+  }
 }
