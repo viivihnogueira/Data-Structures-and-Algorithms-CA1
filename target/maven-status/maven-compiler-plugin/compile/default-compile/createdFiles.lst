@@ -3,6 +3,7 @@ smartwaste/gui/MainGUI.class
 smartwaste/gui/MainGUI$1.class
 smartwaste/model/WasteBin.class
 smartwaste/gui/MainGUI$3.class
+smartwaste/gui/MainGUI$5.class
 smartwaste/gui/MainGUI$4.class
 com/mycompany/smartwaste/SmartWaste.class
 smartwaste/manager/WasteManager.class

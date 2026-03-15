@@ -93,6 +93,11 @@ public class MainGUI extends javax.swing.JFrame {
         });
 
         requestBtn.setText("Request Collection");
+        requestBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestBtnActionPerformed(evt);
+            }
+        });
 
         collectionQueueBtn.setText("View Collection Queue");
 
@@ -300,6 +305,31 @@ if (manager.binExists(binID)){
         fillCmb.setSelectedIndex(0);
         
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void requestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestBtnActionPerformed
+        outputTxt.setText("");
+        try{
+            int binID = Integer.parseInt(idTxt.getText());
+            
+            WasteBin selectedBin = null;
+            
+            /// code to search the bin in the bin list
+            for(WasteBin bin : manager.getBins()){
+                if(bin.getBinID() == binID){
+                    selectedBin = bin;
+                    break;
+                }
+            }
+            if (selectedBin != null){
+                manager.requestCollection(selectedBin);
+                outputTxt.append("Bin " + binID + " added to collection queue\n");
+            } else {
+                outputTxt.append("Bin " + binID + " not found\n");
+            }
+        } catch (NumberFormatException e){
+            outputTxt.append("Please enter a valid Bin ID\n");
+        }
+    }//GEN-LAST:event_requestBtnActionPerformed
 
     /**
      * @param args the command line arguments

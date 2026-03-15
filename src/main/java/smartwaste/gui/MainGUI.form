@@ -207,6 +207,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Request Collection"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="requestBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="collectionQueueBtn">
       <Properties>

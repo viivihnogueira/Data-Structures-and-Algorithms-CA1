@@ -6,59 +6,79 @@ package smartwaste.manager;
 
 import java.util.ArrayList;
 import smartwaste.model.WasteBin;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  *
  * @author viivihnogueira
  */
 public class WasteManager {
+      
+    //declaring ArrayList Bins to save all WasteBin objects added by the user
+    private ArrayList<WasteBin> bins;
     
-    //declaring and creating WasteBin ArrayList to save all bins added by the user
-    private ArrayList <WasteBin> bins;
-    
+    /// declaring linked list queue to request collection of WasteBin Objects 
+    private Queue<WasteBin> collectionQueue = new LinkedList<>();
+
+    /// constructor
     public WasteManager() {
-    bins = new ArrayList<>();
-}
-    public void addBin(WasteBin bin){
+        bins = new ArrayList<>();
+    }
+
+    /// method to add bins
+    public void addBin(WasteBin bin) {
         bins.add(bin);
     }
-    
-    public ArrayList<WasteBin> getBins(){
+
+    // method to view bins list
+    public ArrayList<WasteBin> getBins() {
         return bins;
     }
-    
+
     ///method to delete bins
-    public boolean deleteBin(int binID){
-        for (WasteBin bin : bins){
-            if(bin.getBinID() == binID){
+    public boolean deleteBin(int binID) {
+        for (WasteBin bin : bins) {
+            if (bin.getBinID() == binID) {
                 bins.remove(bin);
                 return true;
             }
         }
         return false;
     }
-    
+
     /// method to not accept duplicated bins
   public boolean binExists(int binID) {
-      for (WasteBin bin : bins){
-          if (bin.getBinID() == binID){
-              return true;
-          }
-      }
-      return false;
-  }
-  
-  // method to update bins
-  public boolean updateBin(int binID, String location, String wasteType,String fillLevel){
-      for (WasteBin bin : bins){
-          if(bin.getBinID() == binID){
-              
-              bin.setLocation(location);
-              bin.setWasteType(wasteType);
-              bin.setFillLevel(fillLevel);
-              return true;
-          }
-      }
-      return false;
-  }
+        for (WasteBin bin : bins) {
+            if (bin.getBinID() == binID) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // method to update bins
+    public boolean updateBin(int binID, String location, String wasteType, String fillLevel) {
+        for (WasteBin bin : bins) {
+            if (bin.getBinID() == binID) {
+
+                bin.setLocation(location);
+                bin.setWasteType(wasteType);
+                bin.setFillLevel(fillLevel);
+                return true;
+            }
+        }
+        return false;
+    }
+    /// method to add a WasteBin object to the collection qu
+    /// @param bin
+    public void requestCollection(WasteBin bin){
+        collectionQueue.add(bin);
+    }
+    
+    /// method to view the queu
+    /// @return e
+   public Queue<WasteBin> getCollectionQueue(){
+       return collectionQueue;
+   }
 }
