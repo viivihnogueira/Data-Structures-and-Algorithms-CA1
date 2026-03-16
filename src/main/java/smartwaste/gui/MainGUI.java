@@ -54,21 +54,36 @@ public class MainGUI extends javax.swing.JFrame {
         outputTxt = new javax.swing.JTextArea();
         processBtn = new javax.swing.JButton();
         historyBtn = new javax.swing.JButton();
+        titleLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Smart Waste");
+        setBackground(new java.awt.Color(0, 102, 0));
 
+        idLbl.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         idLbl.setText("Bin ID:");
 
+        locationLbl.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         locationLbl.setText("Location:");
 
+        typeLbl.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         typeLbl.setText("Waste Type:");
 
+        fillLbl.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         fillLbl.setText("Fill Level:");
 
+        idTxt.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+
+        locationTxt.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+
+        typeCmb.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         typeCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Recycling", "Organic", "General Waste" }));
 
+        fillCmb.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         fillCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Empty", "25%", "50%", "75%", "Full" }));
 
+        addBtn.setBackground(new java.awt.Color(204, 255, 204));
+        addBtn.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         addBtn.setText("Add Bin");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,6 +91,8 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        updateBtn.setBackground(new java.awt.Color(204, 255, 204));
+        updateBtn.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         updateBtn.setText("Update Bin");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +100,8 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        deleteBtn.setBackground(new java.awt.Color(204, 255, 204));
+        deleteBtn.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         deleteBtn.setText("Delete Bin");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +109,8 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        viewBtn.setBackground(new java.awt.Color(204, 255, 204));
+        viewBtn.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         viewBtn.setText("View Bins");
         viewBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +118,8 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        requestBtn.setBackground(new java.awt.Color(255, 255, 204));
+        requestBtn.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         requestBtn.setText("Request Collection");
         requestBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +127,8 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        collectionQueueBtn.setBackground(new java.awt.Color(255, 255, 204));
+        collectionQueueBtn.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         collectionQueueBtn.setText("View Collection Queue");
         collectionQueueBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,10 +137,14 @@ public class MainGUI extends javax.swing.JFrame {
         });
 
         outputTxt.setEditable(false);
+        outputTxt.setBackground(new java.awt.Color(204, 204, 255));
         outputTxt.setColumns(20);
+        outputTxt.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         outputTxt.setRows(5);
         jScrollPane1.setViewportView(outputTxt);
 
+        processBtn.setBackground(new java.awt.Color(255, 255, 204));
+        processBtn.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         processBtn.setText("Process Collection");
         processBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,6 +152,8 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        historyBtn.setBackground(new java.awt.Color(204, 204, 255));
+        historyBtn.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         historyBtn.setText("View History");
         historyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,91 +161,104 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
 
+        titleLbl.setFont(new java.awt.Font("Monospaced", 3, 36)); // NOI18N
+        titleLbl.setForeground(new java.awt.Color(0, 102, 0));
+        titleLbl.setText("Smart Waste");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(requestBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(processBtn)
-                                .addGap(28, 28, 28)
-                                .addComponent(collectionQueueBtn))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                            .addComponent(typeLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(locationLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(fillLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(idLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(typeCmb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(locationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fillCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(86, 86, 86)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(viewBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(fillLbl)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(idLbl)
-                                    .addGap(35, 35, 35))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(locationLbl)
-                                    .addComponent(typeLbl)))
+                            .addComponent(requestBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(processBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(collectionQueueBtn)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(addBtn)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(updateBtn)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(deleteBtn))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(typeCmb, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(idTxt, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(locationTxt)
-                                        .addComponent(fillCmb, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addComponent(viewBtn))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(historyBtn)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                                .addGap(33, 33, 33)
+                                .addComponent(historyBtn)))
+                        .addGap(68, 68, 68)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(50, 50, 50))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(titleLbl)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(titleLbl)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(idLbl)
                     .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(locationLbl)
+                            .addComponent(locationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(typeLbl)
+                            .addComponent(typeCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addBtn)
+                            .addComponent(deleteBtn))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(updateBtn)
+                            .addComponent(viewBtn))))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(locationLbl)
-                    .addComponent(locationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(typeLbl)
-                    .addComponent(typeCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fillLbl)
-                    .addComponent(fillCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBtn)
-                    .addComponent(updateBtn)
-                    .addComponent(deleteBtn)
-                    .addComponent(viewBtn))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(requestBtn)
-                    .addComponent(collectionQueueBtn)
-                    .addComponent(processBtn))
-                .addGap(18, 18, 18)
-                .addComponent(historyBtn)
-                .addGap(13, 13, 13)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fillCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fillLbl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(requestBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(processBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(collectionQueueBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(historyBtn)
+                        .addGap(52, 52, 52))))
         );
+
+        titleLbl.getAccessibleContext().setAccessibleName("Smart Waste");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -461,6 +505,7 @@ if (manager.binExists(binID)){
     private javax.swing.JTextArea outputTxt;
     private javax.swing.JButton processBtn;
     private javax.swing.JButton requestBtn;
+    private javax.swing.JLabel titleLbl;
     private javax.swing.JComboBox<String> typeCmb;
     private javax.swing.JLabel typeLbl;
     private javax.swing.JButton updateBtn;
